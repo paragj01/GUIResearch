@@ -22,6 +22,7 @@ class karl2(Frame):
         new.button.pack()
     def close_window(self):
         self.destroy()
+
 def main():
     karl().mainloop()
 if __name__ == '__main__':
