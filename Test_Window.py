@@ -5,14 +5,14 @@ import sys
 def window():
     app = QApplication(sys.argv)
     win = QMainWindow()
-    win.setGeometry(500,200,600,600)
-    win.setWindowTitle("Fluid Analysis")
+    win.setGeometry(500,200,200,200)
+    win.setWindowTitle("Test Window")
     label = QtWidgets.QLabel(win)
-    label.setText("Fluid Analysis")
-    label.move(200,200)
+    label.setText("LED Light")
+    label.move(100,100)
     button = QtWidgets.QPushButton(win)
     button.setText("ON/OFF")
-    button.move(200,400)
+    button.move(100,150)
 
 
     win.show()
