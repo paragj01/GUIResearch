@@ -2,14 +2,17 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
+import RPi.GPIO as GPIO
+import time
+
 
 class App(QWidget):
 
     def __init__(self):
         super().__init__()
         self.title = 'test'
-        self.left = 10
-        self.top = 10
+        self.left = 100
+        self.top = 100
         self.width = 320
         self.height = 200
         self.initUI()
