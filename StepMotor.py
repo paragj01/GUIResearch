@@ -27,11 +27,14 @@ class App(QWidget):
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
         
-        button = QPushButton('ON/OFF', self)
-        button.setToolTip('ON/OFF')
+        button = QPushButton('ON', self)
+        button.setToolTip('ON')
         button.move(100,70)
         button.clicked.connect(self.on_click)
-        
+        button = QPushButton('OFF', self)
+        button.move(100, 90)
+        button.resize(button.sizeHint())
+        button.clicked.connect(QApplication.instance().quit)
         self.show()
 
     @pyqtSlot()
@@ -65,12 +68,12 @@ class App(QWidget):
         setup()
         # 512 steps for 360 degrees, adapt to your motor
         while True:
-            print ("forward")
             for i in range(256):
                 forwardStep()
-                print ("backward") 
+                print ("forward")
             for i in range(256):
-                backwardStep() 
+                backwardStep()
+                print ("backward")
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
