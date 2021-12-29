@@ -2,9 +2,6 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
-import RPi.GPIO as GPIO
-import time
-
 
 class App(QWidget):
 
