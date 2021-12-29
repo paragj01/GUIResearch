@@ -2,8 +2,8 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
-#import RPi.GPIO as GPIO
-#import time
+import RPi.GPIO as GPIO
+import time
 
 P_A1 = 8  # adapt to your wiring
 P_A2 = 10 # ditto
@@ -36,7 +36,7 @@ class App(QWidget):
 
     @pyqtSlot()
     def on_click(self):
-       """  def setup():
+        def setup():
             GPIO.setmode(GPIO.BOARD)
             GPIO.setup(P_A1, GPIO.OUT)
             GPIO.setup(P_A2, GPIO.OUT)
@@ -70,7 +70,7 @@ class App(QWidget):
                 forwardStep()
                 print ("backward") 
             for i in range(256):
-                backwardStep()  """
+                backwardStep() 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
