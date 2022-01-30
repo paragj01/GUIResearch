@@ -1,5 +1,6 @@
 ﻿import sys, hashlib, sqlite3, re, PyQt5.QtGui
-import qdarkstyle, datetime, webbrowser
+#import qdarkstyle, 
+import datetime, webbrowser
 import matplotlib.pyplot as plt
 from PyQt5.QtWidgets import (QApplication, QSplitter, QGridLayout, QHBoxLayout, QPushButton, 
                             QTreeWidget, QFrame, QLabel, QHBoxLayout, QMainWindow,
@@ -14,9 +15,8 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 from matplotlib.backends.backend_qt5 import NavigationToolbar2QT as NavigationToolbar
 import numpy as np
-import matplotlib.pyplot as plt
 
-# blank interface for drawing
+# blank interface for drawing 
 class MymplCanvas(FigureCanvas):
 
     def __init__(self, parent=None, width=500, height=400):
@@ -39,7 +39,7 @@ class MymplCanvas(FigureCanvas):
         y1, y2, y3, y4 = np.random.randint(1, 25, size=(4, n_bins))
 
         self.axes.clear()
-        self.fig.suptitle("Tabulation: NCST MMA contest information statistics")
+        self.fig.suptitle("Statistics")
         width = 0.2
         self.axes.bar(x, y1, width = 0.2)
         self.axes.bar(x + width, y2, width = 0.2)
@@ -78,7 +78,7 @@ class MainWindow(QMainWindow):
         self.setWindowIcon(QIcon("d439.png"))
 
         # Set the window style
-        self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+        #self.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 
          # Set the overall layout to display left and right
         pagelayout = QGridLayout()
@@ -91,13 +91,8 @@ class MainWindow(QMainWindow):
             QMessageBox.critical(None, ("Could not open database"), ("SQlite support"), QMessageBox.Cancel)
             return False
 
-        """
-        The basic functions of the layout page are completed here
-        The layout is divided into left and right sides, the left side is the button, the right side is the stack layout, and the page switching function of the mouse click is completed.
-        The last two layouts are deployed in the splitter to complete the drag-and-drop interface variable size inside the page
-        """
-
         """ Start layout on the left """
+        
         # Create the left main window
         top_left_frame = QFrame(self)
         # draw rectangle panel
@@ -930,15 +925,14 @@ class MainWindow(QMainWindow):
          pass
 
      # The entry competition label of the entry information page
-    def input_contest_one(self):
-         """
-         Create an empty list and add the information of the three players (1, 4) because the initial dictionary is set up for this index
+         """ Create an empty list and add the information of the three players (1, 4) because the initial dictionary is set up for this index
          After adding, insert it into the database and display it in the table
          """
          # Student ID Name College Major Gender Start Time End Time Award Time Teacher Competition Name Award Level
-    id_, name_, college_, major_, gender_, begin_time, end_time, in_time, teacher_, contest_, class_ \
+    def input_contest_one(self):
+        id_, name_, college_, major_, gender_, begin_time, end_time, in_time, teacher_, contest_, class_ \
             = [], [], [], [], [], [], [], [], [], [], [] 
-    for i in range(1, 4):
+        for i in range(1, 4):
             id_.append(self.team['team_id' + str(i)].text())
             name_.append(self.team['team_name' + str(i)].text())
             college_.append(self.team['team_college' + str(i)].currentText())
@@ -950,7 +944,8 @@ class MainWindow(QMainWindow):
             teacher_.append(self.input_contest_teacher_name.currentText())
             contest_.append(self.input_contest_class.currentText())
             class_.append(self.team['team_price' + str(i)].currentText())
-    for i in range (3):
+            
+        for i in range (3):
             self.query.execute("insert into sducontest(id, name, college, major, gender, begin_time, end_time, in_time, teacher, \
                 contest, price) values(\"{}\", \"{}\", \"{}\", \"{}\", \"{}\", \"{}\", \"{}\", \"{}\", \"{}\", \"{}\", \"{}\")" \
                 .format(id_[i], name_[i], college_[i], major_[i], gender_[i], begin_time[i], \
@@ -1544,7 +1539,7 @@ class MainWindow(QMainWindow):
         """
         screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
-        self.move((screen.width() - size.width()) / 2, (screen.height() - size.height()) / 2)
+        #self.move((screen.width() - size.width()) / 2, (screen.height() - size.height()) / 2)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
