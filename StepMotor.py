@@ -28,55 +28,59 @@ class App(QWidget):
         self.setGeometry(self.left, self.top, self.width, self.height)
         
         button = QPushButton('ON', self)
-        button.setToolTip('ON')
         button.move(100,70)
         button.clicked.connect(self.on_click)
+
         button = QPushButton('OFF', self)
         button.move(100, 90)
-        button.resize(button.sizeHint())
-        button.clicked.connect(QApplication.instance().quit)
+        button.clicked.connect(self.off_click)
+        #button.clicked.connect(QApplication.instance().quit)
         self.show()
 
+    """ def setup():
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(P_A1, GPIO.OUT)
+        GPIO.setup(P_A2, GPIO.OUT)
+        GPIO.setup(P_B1, GPIO.OUT)
+        GPIO.setup(P_B2, GPIO.OUT)
+    
+    def setStepper(in1, in2, in3, in4):
+        GPIO.output(P_A1, in1)
+        GPIO.output(P_A2, in2)
+        GPIO.output(P_B1, in3)
+        GPIO.output(P_B2, in4)
+        time.sleep(delay)
+
+    def forwardStep():
+        setStepper(1, 0, 1, 0)
+        setStepper(0, 1, 1, 0)
+        setStepper(0, 1, 0, 1)
+        setStepper(1, 0, 0, 1)
+
+    def backwardStep():
+        setStepper(1, 0, 0, 1)
+        setStepper(0, 1, 0, 1)
+        setStepper(0, 1, 1, 0)
+        setStepper(1, 0, 1, 0) """
+  
     @pyqtSlot()
     def on_click(self):
-            print('PyQt5 button click')
-            self.close()
-        #def setup():
-        #    GPIO.setmode(GPIO.BOARD)
-        #    GPIO.setup(P_A1, GPIO.OUT)
-        #    GPIO.setup(P_A2, GPIO.OUT)
-        #    GPIO.setup(P_B1, GPIO.OUT)
-        #    GPIO.setup(P_B2, GPIO.OUT)
-
-        #def forwardStep():
-        #    setStepper(1, 0, 1, 0)
-        #    setStepper(0, 1, 1, 0)
-        #    setStepper(0, 1, 0, 1)
-        #    setStepper(1, 0, 0, 1)
-
-        #def backwardStep():
-        #    setStepper(1, 0, 0, 1)
-        #    setStepper(0, 1, 0, 1)
-        #    setStepper(0, 1, 1, 0)
-        #    setStepper(1, 0, 1, 0)
-  
-        #def setStepper(in1, in2, in3, in4):
-        #    GPIO.output(P_A1, in1)
-        #    GPIO.output(P_A2, in2)
-        #    GPIO.output(P_B1, in3)
-        #    GPIO.output(P_B2, in4)
-        #    time.sleep(delay)
-
-        #setup()
-        ## 512 steps for 360 degrees, adapt to your motor
-        #while True:
-        #    for i in range(256):
-        #        forwardStep()
-        #        print ("forward")
-        #    for i in range(256):
-        #        backwardStep()
-        #        print ("backward")
-
+        print('Button On')
+            ## 512 steps for 360 degrees, adapt to your motor
+        """ setup()
+        while True:
+            for i in range(256):
+                forwardStep()
+                print ("forward")
+            for i in range(256):
+                backwardStep()
+                print ("backward") """
+            #self.close()
+    
+    def off_click(self):
+            print('Button Off')
+            #self.close()
+           
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = App()
