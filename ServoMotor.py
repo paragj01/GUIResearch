@@ -2,14 +2,14 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLineEdit, QLabel
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 import time
 
-""" GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BOARD)
 GPIO.setup(8, GPIO.OUT)
 ser=GPIO.PWM(8,50)
 ser.start(2.5)
- """
+
 class App(QWidget):
 
     def __init__(self):
@@ -41,6 +41,7 @@ class App(QWidget):
     def on_click(self):
         print('PyQt5 button click')
         global dc
+        deg1 = QLineEdit(self)
         deg = abs(float(deg1))
         dc = 0.056*deg + 2.5
         ser.ChangeDutyCycle(dc)
