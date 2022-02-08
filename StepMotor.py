@@ -16,7 +16,7 @@ class App(QWidget):
 
     def __init__(self):
         super().__init__()
-        self.title = 'test'
+        self.title = 'StepMotor'
         self.left = 100
         self.top = 100
         self.width = 320
