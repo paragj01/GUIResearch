@@ -390,6 +390,14 @@ class MainWindow(QMainWindow):
         screen = QDesktopWidget().screenGeometry()
         size = self.geometry()
 
+    def closeEvent(self, event):
+        result = QMessageBox.question(self, 'Leaving...','Do you want to exit?', QMessageBox.Yes | QMessageBox.No)
+        if result == QMessageBox.Yes:
+
+            event.accept()  
+        else:
+            event.ignore()
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = MainWindow()
