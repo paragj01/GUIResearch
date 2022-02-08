@@ -5,10 +5,10 @@ from PyQt5.QtCore import pyqtSlot
 #import RPi.GPIO as GPIO
 #import time
 
-P_A1 = 8  # adapt to your wiring
-P_A2 = 10 # ditto
-P_B1 = 11 # ditto
-P_B2 = 13 # ditto
+P_A1 = 8 
+P_A2 = 10 
+P_B1 = 11 
+P_B2 = 13 
 delay = 0.005 # time to settle
 
 
